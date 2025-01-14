@@ -1,0 +1,243 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevent scrollbars */
+    background: url('/assets/images/bg.png') no-repeat center center fixed !important;
+    background-size: cover !important;
+  }
+  
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 100%;
+    height: 150px; /* Increased height for the header */
+}
+
+.header img {
+    max-width: 100%;
+    height: auto;
+    width: 500px; /* Increased size */
+    object-fit: contain;
+}
+
+/* Board styling */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; /* Increased gap between cells */
+    width: 400px; /* Increased width */
+    height: 400px; /* Increased height */
+    margin: auto;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow for emphasis */
+}
+
+/* Cell styling */
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+    position: relative;
+}
+
+.cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cell:hover {
+    transform: scale(1.1); /* Increased hover effect */
+}
+
+  
+  // Game information
+  .game-info {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+  
+  button {
+    background-color: #FF41F8;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #7702FF;
+  }
+
+
+  @keyframes cell-pop {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: cell-pop 0.2s ease-out;
+  }
+  
+  .game-info {
+    text-align: center;
+    margin-top: 20px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+  
+    &.winner {
+      color: #ffea00;
+      animation: cell-pop 0.5s ease-in-out infinite alternate;
+    }
+  }
+  
+  button {
+    transition: transform 0.2s;
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  .player-move {
+    border: 3px solid #00ff00; /* Green border for player moves */
+    box-shadow: 0 0 10px #00ff00;
+  }
+  
+  .bot-move {
+    border: 3px solid #ff0000; /* Red border for bot moves */
+    box-shadow: 0 0 10px #ff0000;
+  }
+  
+
+  @keyframes dance {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(5deg);
+    }
+  }
+  
+  .winning-cell {
+    animation: dance 0.5s ease-in-out infinite;
+    border: 4px solid #ffea00; /* Highlight winning cells */
+    box-shadow: 0 0 15px #ffea00;
+  }
+  
+
+
+  /* Snowflakes container */
+.snowflakes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicking through snowflakes */
+    z-index: 10;
+  }
+  
+  .snowflake {
+    position: absolute;
+    top: -10%; /* Start above the screen */
+    font-size: 1.5rem;
+    color: #fff;
+    opacity: 0.8;
+    animation: fall linear infinite;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateX(0) translateY(0) rotate(0deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(calc(-100vw + 200px)) translateY(100vh) rotate(360deg);
+      opacity: 0.2;
+    }
+  }
+  
+  /* Generate multiple snowflakes with random animation timings and sizes */
+  .snowflake:nth-child(1) { left: 10%; animation-duration: 5s; font-size: 1.2rem; }
+  .snowflake:nth-child(2) { left: 20%; animation-duration: 6s; font-size: 1.5rem; }
+  .snowflake:nth-child(3) { left: 30%; animation-duration: 7s; font-size: 1.8rem; }
+  .snowflake:nth-child(4) { left: 40%; animation-duration: 8s; font-size: 1.3rem; }
+  .snowflake:nth-child(5) { left: 50%; animation-duration: 9s; font-size: 1.6rem; }
+  .snowflake:nth-child(6) { left: 60%; animation-duration: 10s; font-size: 1.7rem; }
+  .snowflake:nth-child(7) { left: 70%; animation-duration: 5.5s; font-size: 1.2rem; }
+  .snowflake:nth-child(8) { left: 80%; animation-duration: 6.5s; font-size: 1.5rem; }
+  .snowflake:nth-child(9) { left: 90%; animation-duration: 7.5s; font-size: 1.4rem; }
+
+
+  .game-info .restart {
+    background-color: #ff6600 !important; /* Vibrant orange background */
+    color: #fff !important; /* White text color */
+    border: 2px solid #ff3300; /* Adds a border for better definition */
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .game-info .restart:hover {
+    color: #fff !important;
+    transform: scale(1.1); /* Slight scaling effect */
+  }
+  
+  
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1rem;
+    z-index: 1000;
+  }
+  
+  .footer a {
+    color: #1da1f2; /* Twitter blue color */
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  

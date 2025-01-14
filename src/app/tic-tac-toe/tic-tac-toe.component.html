@@ -1,0 +1,49 @@
+<div class="header">
+    <img src="assets/images/header.jpg" alt="Raccoons Logo">
+  </div>
+  
+  <div class="board">
+    <div
+      class="cell"
+      *ngFor="let cell of board; let i = index"
+      [ngClass]="{
+        'player-move': cell === 'X',
+        'bot-move': cell === 'O',
+        'winning-cell': winningCells.includes(i) && winner === 'X'
+      }"
+      (click)="makeMove(i)"
+    >
+      <img *ngIf="cell === 'X'" [src]="playerImage" alt="Player">
+      <img *ngIf="cell === 'O'" [src]="botImage" alt="Bot">
+    </div>
+  </div>
+  
+  
+  <div class="game-info">
+    <p *ngIf="gameOver">
+      {{ winner === 'X' ? 'Player Wins! 🎉' : winner === 'O' ? 'Bot Wins! 🤖' : 'It\'s a Draw!' }}
+    </p>
+    <button class="restart" (click)="resetGame()">Restart Game</button>
+  </div>
+
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+  </div>
+  
+  
+
+  <div class="footer">
+    <p>
+      <a href="https://twitter.com/binaryshogun" target="_blank">Twitter: &#64;binaryshogun</a>
+     <span>Discord: binaryshogun</span>
+    </p>
+  </div>
+  
