@@ -10,5 +10,5 @@ import { TicTacToeComponent } from "./tic-tac-toe/tic-tac-toe.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'abstract-frens-tic-tac-toe';
+  title = 'Canna Sapiens';
 }

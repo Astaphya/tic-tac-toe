@@ -9,9 +9,9 @@ body, html {
     height: 100%;
     width: 100%;
     overflow: hidden; /* Prevent scrollbars */
-    background: url('/assets/images/bg.png') no-repeat center center fixed;
+    background: url('/assets/images/bg.jpg') no-repeat center center fixed;
     background-size: cover;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.7); 
     background-blend-mode: overlay; 
 }
 
