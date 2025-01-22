@@ -1,5 +1,5 @@
 <div class="header">
-    <img src="assets/images/header.png" alt="Header">
+    <img src="assets/images/header.jpg" alt="Header">
   </div>
   
   <div class="board">
@@ -15,8 +15,10 @@
     >
       <img *ngIf="cell === 'X'" [src]="playerImage" alt="Player">
       <img *ngIf="cell === 'O'" [src]="botImage" alt="Bot">
+      <img *ngIf="cell === 'closed'" src="assets/images/closed.png" alt="Closed">
     </div>
   </div>
+  
   
   
   <div class="game-info">
