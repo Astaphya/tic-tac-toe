@@ -60,17 +60,21 @@ export class TicTacToeComponent {
   }
 
   makeMove(index: number): void {
+    if (this.currentPlayer === 'O' || this.gameOver) {
+      return; // Prevent user from making a move if it's the bot's turn or the game is over
+    }
+  
     if (this.board[index] === 'closed') {
       // Clear the 'closed' placeholder on first move
       this.board = Array(9).fill('');
     }
   
-    if (!this.board[index] && !this.gameOver) {
+    if (!this.board[index]) {
       this.board[index] = this.currentPlayer;
       this.checkWinner();
   
       if (!this.gameOver) {
-        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+        this.currentPlayer = 'O';
         setTimeout(() => this.botMove(), 500);  // Delay for better UX
       }
     }
